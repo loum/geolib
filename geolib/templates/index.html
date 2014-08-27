@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <form class="form-horizontal"
+        role="form"
+        action=""
+        method="post"
+        name="meta_search">
+    {{ form.hidden_tag() }}
+    <fieldset>
+      <legend>Metadata Search</legend>
+      {% if form.errors.row_id is not defined %}
+      <div class="control-group">
+        <label for="row_id" class="control-label">Row ID:</label>
+        <div class="controls">
+          {{ form.row_id(type="text",
+                         class="input-xlarge",
+                         placeholder="Row ID") }}
+        </div>
+      </div>
+      {% else %}
+      <div class="control-group error">
+        <label for="row_id" class="control-label">Row ID:</label>
+        <div class="controls">
+          {{ form.row_id(type="text",
+                         class="input-xlarge",
+                         placeholder="Row ID") }}
+          {% for error in form.errors.row_id %}
+          <span class="help-inline">{{ error }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="control-group">
+        <div class="controls">
+          <input type="submit" class="btn btn-primary" value="Search">
+        </div>
+      </div>
+    </div>
+
+    </fieldset>
+  </form>
+</div>
+{% endblock %}
