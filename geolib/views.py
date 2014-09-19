@@ -10,6 +10,7 @@ from mpl_toolkits.basemap import Basemap
 import matplotlib.patches
 import matplotlib.pyplot as plt
 import requests
+import urllib
 
 from geolib import app
 from geolib.forms.meta_search import MetaSearch
@@ -32,6 +33,20 @@ def meta(row_id):
     json_data = json.loads(response.text)
 
     return flask.render_template('meta.html', result=json_data)
+
+
+@app.route('/geolib/search')
+def search():
+    query_terms = {'q': flask.request.args.get('q')}
+    params = urllib.urlencode(query_terms)
+
+    free_text_url = ('%s%s' % (app.config['FREE_TEXT_URL'], params))
+
+    response = requests.get(free_text_url)
+    json_data = json.loads(response.text)
+    app.logger.debug('json_data: %s' % json_data)
+
+    return flask.render_template('results.html', result=json_data)
 
 
 @app.route('/footprints')

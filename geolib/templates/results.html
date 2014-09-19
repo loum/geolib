@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+  <div class="container">
+
+    <table class="table table-hover table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>Images:</th>
+        </tr>
+      </thead>
+      {% for meta in result.metas %}
+      <tr>
+        <td>
+          <a href="/geolib/meta/results%3Frow_id%3D{{ meta }}">
+            {{ meta }}
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+
+  </div>
+{% endblock %}
