@@ -49,6 +49,21 @@ def search():
     return flask.render_template('results.html', result=json_data)
 
 
+@app.route('/geolib/points')
+def points():
+    query_terms = {'q': flask.request.args.get('q')}
+    params = urllib.urlencode(query_terms)
+
+    points_url = ('%s%s' % (app.config['POINTS_API'], params))
+    app.logger.debug('points_url: %s' % points_url)
+
+    response = requests.get(points_url)
+    json_data = json.loads(response.text)
+    app.logger.debug('json_data: %s' % json_data)
+
+    return flask.render_template('results2.html', result=json_data)
+
+
 @app.route('/footprints')
 def footprints():
     basem = Basemap(width=2500000,

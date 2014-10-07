@@ -13,8 +13,14 @@ def index():
     form_status = form.validate_on_submit()
 
     if form_status:
-        return flask.redirect(flask.url_for('meta',
-                                            row_id=form.row_id.data))
+        app.logger.debug('float: %s' % str(form.latitude.data))
+        if len(form.row_id.data):
+            return flask.redirect(flask.url_for('meta',
+                                                row_id=form.row_id.data))
+        elif form.latitude.data is not None:
+            query_terms = {'q': '%s,%s' % (form.latitude.data,
+                                           form.longitude.data)}
+            return flask.redirect(flask.url_for('points', **query_terms))
 
     return flask.render_template('index.html',
                                  title='Metadata Key Search',
