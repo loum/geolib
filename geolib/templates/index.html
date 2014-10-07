@@ -35,6 +35,54 @@
       </div>
       {% endif %}
 
+      <!-- Latitude text box -->
+      {% if form.errors.latitude is not defined %}
+      <div class="control-group">
+        <label for="latitude" class="control-label">Latitude:</label>
+        <div class="controls">
+          {{ form.latitude(type="text",
+                           class="input-xlarge",
+                           placeholder="Latitude") }}
+        </div>
+      </div>
+      {% else %}
+      <div class="control-group error">
+        <label for="latitude" class="control-label">Latitude:</label>
+        <div class="controls">
+          {{ form.latitude(type="text",
+                            class="input-xlarge",
+                            placeholder="Latitude") }}
+          {% for error in form.errors.latitude %}
+          <span class="help-inline">{{ error }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Longitude text box -->
+      {% if form.errors.longitude is not defined %}
+      <div class="control-group">
+        <label for="longitude" class="control-label">Longitude:</label>
+        <div class="controls">
+          {{ form.longitude(type="text",
+                           class="input-xlarge",
+                           placeholder="Longitude") }}
+        </div>
+      </div>
+      {% else %}
+      <div class="control-group error">
+        <label for="longitude" class="control-label">Longitude:</label>
+        <div class="controls">
+          {{ form.longitude(type="text",
+                           class="input-xlarge",
+                           placeholder="Longitude") }}
+          {% for error in form.errors.longitude %}
+          <span class="help-inline">{{ error }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
       <div class="control-group">
         <div class="controls">
           <input type="submit" class="btn btn-primary" value="Search">
