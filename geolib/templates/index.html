@@ -11,7 +11,7 @@
         name="meta_search">
     {{ form.hidden_tag() }}
     <fieldset>
-      <legend>Metadata Search</legend>
+      <legend>Accumulo Key ID Search (Binary Search)</legend>
       {% if form.errors.row_id is not defined %}
       <div class="control-group">
         <label for="row_id" class="control-label">Row ID:</label>
@@ -36,6 +36,7 @@
       {% endif %}
 
       <!-- Latitude text box -->
+      <legend>Geohash Search</legend>
       {% if form.errors.latitude is not defined %}
       <div class="control-group">
         <label for="latitude" class="control-label">Latitude:</label>
@@ -82,6 +83,35 @@
         </div>
       </div>
       {% endif %}
+
+      <!-- Chained Iterator Set -->
+      <legend>Chained Iterator Search</legend>
+      <div class="control-group">
+        <label for="image_title" class="control-label">Image Title:</label>
+        <div class="controls">
+          {{ form.image_title(type="text",
+                              class="input-xlarge",
+                              placeholder="Image Title") }}
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label for="image_rep" class="control-label">Image Representation:</label>
+        <div class="controls">
+          {{ form.image_rep(type="text",
+                            class="input-xlarge",
+                            placeholder="Image Representation") }}
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label for="image_sensor" class="control-label">Image Sensor:</label>
+        <div class="controls">
+          {{ form.image_sensor(type="text",
+                               class="input-xlarge",
+                               placeholder="Image Sensor") }}
+        </div>
+      </div>
 
       <div class="control-group">
         <div class="controls">

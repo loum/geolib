@@ -19,3 +19,6 @@ class MetaSearch(Form):
                            [RequiredIf('latitude'),
                             validators.Optional(),
                             validators.NumberRange(min=-180, max=180)])
+    image_title = TextField('image_title')
+    image_rep = TextField('image_rep')
+    image_sensor = TextField('image_sensor')
