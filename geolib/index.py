@@ -42,9 +42,8 @@ def index():
             terms = {'NITF_FTITLE': title_data,
                      'NITF_IREP': image_rep,
                      'NITF_ISORCE': image_source,
-                     'NITF_COMMENTS': image_comments}
+                     'NITF_IMAGE_COMMENTS': image_comments}
 
-            #request = urllib.urlencode(terms, doseq=True)
             return flask.redirect(flask.url_for('search', **terms))
 
     return flask.render_template('index.html',
