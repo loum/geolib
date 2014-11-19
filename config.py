@@ -1,7 +1,7 @@
 CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
 
-REST_IP = '172.20.10.14'
+REST_IP = '172.20.1.101'
 REST_PORT = '5150'
 REST_SERVER = '%s:%s' % (REST_IP, REST_PORT)
 

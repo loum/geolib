@@ -21,4 +21,5 @@ class MetaSearch(Form):
                             validators.NumberRange(min=-180, max=180)])
     image_title = TextField('image_title')
     image_rep = TextField('image_rep')
-    image_sensor = TextField('image_sensor')
+    image_source = TextField('image_source')
+    image_comments = TextField('image_comments')

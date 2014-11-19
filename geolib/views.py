@@ -11,6 +11,7 @@ import matplotlib.patches
 import matplotlib.pyplot as plt
 import requests
 import urllib
+import urlparse
 
 from geolib import app
 from geolib.forms.meta_search import MetaSearch
@@ -37,12 +38,18 @@ def meta(row_id):
 
 @app.route('/geolib/search')
 def search():
-    query_terms = {'q': flask.request.args.get('q')}
-    params = urllib.urlencode(query_terms)
+    #query_terms = {'q': flask.request.args.get('q')}
+    #params = urllib.urlencode(query_terms)
 
-    free_text_url = ('%s%s' % (app.config['FREE_TEXT_URL'], params))
+    #free_text_url = ('%s%s' % (app.config['FREE_TEXT_URL'], params))
 
-    response = requests.get(free_text_url)
+    parser = urlparse.urlparse(flask.request.url)
+    query_string = parser.query
+
+    search_url = ('%s%s' % (app.config['FREE_TEXT_URL'], query_string))
+    app.logger.debug('search_url: %s' % search_url)
+
+    response = requests.get(search_url)
     json_data = json.loads(response.text)
     app.logger.debug('json_data: %s' % json_data)
 

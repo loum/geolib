@@ -87,11 +87,11 @@
       <!-- Chained Iterator Set -->
       <legend>Chained Iterator Search</legend>
       <div class="control-group">
-        <label for="image_title" class="control-label">Image Title:</label>
+        <label for="image_title" class="control-label">Title:</label>
         <div class="controls">
           {{ form.image_title(type="text",
                               class="input-xlarge",
-                              placeholder="Image Title") }}
+                              placeholder="Title") }}
         </div>
       </div>
 
@@ -105,13 +105,23 @@
       </div>
 
       <div class="control-group">
-        <label for="image_sensor" class="control-label">Image Sensor:</label>
+        <label for="image_source" class="control-label">Source:</label>
         <div class="controls">
-          {{ form.image_sensor(type="text",
+          {{ form.image_source(type="text",
                                class="input-xlarge",
-                               placeholder="Image Sensor") }}
+                               placeholder="Source") }}
         </div>
       </div>
+
+      <div class="control-group">
+        <label for="image_comments" class="control-label">Comments:</label>
+        <div class="controls">
+          {{ form.image_comments(type="text",
+                                 class="input-xlarge",
+                                 placeholder="Comments") }}
+        </div>
+      </div>
+
 
       <div class="control-group">
         <div class="controls">
