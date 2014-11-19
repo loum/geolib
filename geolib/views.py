@@ -18,6 +18,7 @@ from geolib.forms.meta_search import MetaSearch
 
 # Import our views.
 import geolib.index
+import geolib.audit
 
 
 @app.route('/health')
@@ -38,11 +39,6 @@ def meta(row_id):
 
 @app.route('/geolib/search')
 def search():
-    #query_terms = {'q': flask.request.args.get('q')}
-    #params = urllib.urlencode(query_terms)
-
-    #free_text_url = ('%s%s' % (app.config['FREE_TEXT_URL'], params))
-
     parser = urlparse.urlparse(flask.request.url)
     query_string = parser.query
 

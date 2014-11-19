@@ -1,4 +1,4 @@
-"""Geo library web interface.
+"""GeoLib web interface.
 
 """
 import flask
