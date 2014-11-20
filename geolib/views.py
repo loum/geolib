@@ -46,8 +46,13 @@ def search():
     app.logger.debug('search_url: %s' % search_url)
 
     response = requests.get(search_url)
-    json_data = json.loads(response.text)
-    app.logger.debug('json_data: %s' % json_data)
+    app.logger.debug('response: %s' % dir(response))
+    if response.status_code == 200:
+        app.logger.debug('response text: %s' % str(response.text))
+        json_data = json.loads(response.text)
+        app.logger.debug('json_data: %s' % json_data)
+    else:
+        json_data = {'metas': []}
 
     return flask.render_template('results.html', result=json_data)
 

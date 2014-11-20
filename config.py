@@ -9,3 +9,4 @@ META_REST_URL = 'http://%s/geolib/meta/v0.1/' % REST_SERVER
 FREE_TEXT_URL = 'http://%s/geolib/meta/v0.1/search?' % REST_SERVER
 AUDIT_URL = 'http://%s/geolib/audit/v0.1/recent' % REST_SERVER
 POINTS_API = 'http://%s/geolib/image/v0.1/points?' % REST_SERVER
+THUMB_API = 'http://%s/geolib/thumb' % REST_SERVER
