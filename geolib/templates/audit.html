@@ -11,18 +11,48 @@
           <th>Audits:</th>
         </tr>
       </thead>
+
+      {% set count = 0 %}
       {% for audit in result.audits %}
+        {% set count = count + 1 %}
         {% for key, value in audit.iteritems() %}
         <tr>
-          <td>
-            <a href="{{ value.resource }}">
-              {{ key }}
-            </a>
+          <td class="panel-title">
+            <div class="panel-group"
+                 id="accordion"
+                 role="tablist"
+                 aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading"
+                     role="tab"
+                     id="heading_{{ count }}">
+                    <a data-toggle="collapse"
+                       data-parent="#accordion"
+                       href="#collapse_{{ count }}"
+                       aria-expanded="true"
+                       aria-controls="collapse_{{ count }}">
+                      {{ key }}
+                    </a>
+                </div>
+                <div id="collapse_{{ count }}"
+                     class="panel-collapse collapse in"
+                     role="tabpanel"
+                     aria-labelledby="heading_{{ count }}">
+                  <div class="panel-body">
+                    {{ value }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </td>
         </tr>
+
+
         {% endfor %}
       {% endfor %}
     </table>
+
 
   </div>
 {% endblock %}
