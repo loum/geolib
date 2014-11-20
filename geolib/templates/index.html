@@ -90,17 +90,18 @@
         <label for="image_title" class="control-label">Title:</label>
         <div class="controls">
           {{ form.image_title(type="text",
-                              class="input-xlarge",
-                              placeholder="Title") }}
+                             class="input-xlarge",
+                             placeholder="Title") }}
         </div>
       </div>
 
       <div class="control-group">
-        <label for="image_rep" class="control-label">Image Representation:</label>
+        <label for="image_rep" class="control-label">
+          Image Representation:
+        </label>
         <div class="controls">
-          {{ form.image_rep(type="text",
-                            class="input-xlarge",
-                            placeholder="Image Representation") }}
+          {{ form.image_rep(type="button",
+                            class="input-xlarge") }}
         </div>
       </div>
 
