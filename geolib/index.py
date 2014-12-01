@@ -30,17 +30,15 @@ def index():
             points = []
             point_01 = '%s,%s' % (form.point_01_latitude.data,
                                   form.point_01_longitude.data)
-            #points.append(point_01)
+            points.append(point_01)
 
-            #if form.point_02_latitude.data is not None:
-            point_02 = '%s,%s' % (form.point_02_latitude.data,
-                                    form.point_02_longitude.data)
-            #points.append(point_02)
-            points = [point_01, point_02]
+            if form.point_02_latitude.data is not None:
+                point_02 = '%s,%s' % (form.point_02_latitude.data,
+                                      form.point_02_longitude.data)
+                points.append(point_02)
 
             query_terms = {'q': points}
-            #query_terms = {'q': '%s,%s' % (form.point_01_latitude.data,
-            #                               form.point_01_longitude.data)}
+
             return flask.redirect(flask.url_for('gdelt_points',
                                                 **query_terms))
         else:
