@@ -16,16 +16,23 @@
 </head>
 
 <body>
+  {% set navigation_bar = [
+    ('/geolib/index.html', 'search', 'Search'),
+    ('/geolib/audit?count=10', 'audit', 'Audit')
+  ] -%}
+  {% set active_page = active_page|default('index') -%}
   {% block nav %}
   <div class="navbar">
     <div class="navbar-inner">
       <a class="brand">GeoLib</a>
+      {% for href, id, caption in navigation_bar %}
       <ul class="nav">
-        <li class="active"><a href="/geolib/index.html">Search</a></li>
+        <li{% if id == active_page %} class="active"{% endif %}>
+          <a href="{{ href|e }}">{{ caption|e }}</a>
+        </li>
       </ul>
-      <ul class="nav">
-        <li class="active"><a href="/geolib/audit?count=1">Audit</a></li>
-      </ul>
+      {% endfor %}
+
       <form class="navbar-search
             pull-right
             hidden-phone"

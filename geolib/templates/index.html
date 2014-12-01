@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% set active_page = "search" %}
 
 {% block title %}Home{% endblock %}
 
@@ -42,7 +43,7 @@
         <label for="latitude" class="control-label">Latitude:</label>
         <div class="controls">
           {{ form.latitude(type="text",
-                           class="input-xlarge",
+                           class="input-sm",
                            placeholder="Latitude") }}
         </div>
       </div>
@@ -51,7 +52,7 @@
         <label for="latitude" class="control-label">Latitude:</label>
         <div class="controls">
           {{ form.latitude(type="text",
-                            class="input-xlarge",
+                            class="input-sm",
                             placeholder="Latitude") }}
           {% for error in form.errors.latitude %}
           <span class="help-inline">{{ error }}</span>
@@ -66,7 +67,7 @@
         <label for="longitude" class="control-label">Longitude:</label>
         <div class="controls">
           {{ form.longitude(type="text",
-                           class="input-xlarge",
+                           class="input-sm",
                            placeholder="Longitude") }}
         </div>
       </div>
@@ -75,7 +76,7 @@
         <label for="longitude" class="control-label">Longitude:</label>
         <div class="controls">
           {{ form.longitude(type="text",
-                           class="input-xlarge",
+                           class="input-sm",
                            placeholder="Longitude") }}
           {% for error in form.errors.longitude %}
           <span class="help-inline">{{ error }}</span>
@@ -123,6 +124,81 @@
         </div>
       </div>
 
+      <!-- GDELT Line Search -->
+      <legend>GDELT Line (point to point) Search</legend>
+      {% if form.errors.point_01_latitude is not defined and
+            form.errors.point_01_longitude is not defined %}
+      <div class="control-group">
+        <label for="point_01" class="control-label">
+            Point 1:
+        </label>
+        <div class="controls">
+          {{ form.point_01_latitude(type="text",
+                                    class="input-sm",
+                                    placeholder="Latitude") }}
+          {{ form.point_01_longitude(type="text",
+                                     class="input-sm",
+                                     placeholder="Longitude") }}
+        </div>
+      </div>
+      {% else %}
+      <div class="control-group error">
+        <label for="point_01" class="control-label">
+            Point 1:
+        </label>
+        <div class="controls">
+          {{ form.point_01_latitude(type="text",
+                                    class="input-sm",
+                                    placeholder="Latitude") }}
+          {{ form.point_01_longitude(type="text",
+                                     class="input-sm",
+                                     placeholder="Longitude") }}
+          {% for error in form.errors.point_01_latitude %}
+          <span class="help-inline">{{ error }}</span>
+          {% endfor %}
+          {% for error in form.errors.point_01_longitude %}
+          <span class="help-inline">{{ error }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% if form.errors.point_02_latitude is not defined and
+            form.errors.point_02_longitude is not defined %}
+      <div class="control-group">
+        <label for="point_02" class="control-label">
+            Point 2:
+        </label>
+        <div class="controls">
+          {{ form.point_02_latitude(type="text",
+                                    class="input-sm",
+                                    placeholder="Latitude") }}
+          {{ form.point_02_longitude(type="text",
+                                     class="input-sm",
+                                     placeholder="Longitude") }}
+        </div>
+      </div>
+      {% else %}
+      <div class="control-group error">
+        <label for="point_02" class="control-label">
+            Point 2:
+        </label>
+        <div class="controls">
+          {{ form.point_02_latitude(type="text",
+                                    class="input-sm",
+                                    placeholder="Latitude") }}
+          {{ form.point_02_longitude(type="text",
+                                     class="input-sm",
+                                     placeholder="Longitude") }}
+          {% for error in form.errors.point_02_latitude %}
+          <span class="help-inline">{{ error }}</span>
+          {% endfor %}
+          {% for error in form.errors.point_02_longitude %}
+          <span class="help-inline">{{ error }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
 
       <div class="control-group">
         <div class="controls">

@@ -37,6 +37,17 @@ def meta(row_id):
     return flask.render_template('meta.html', result=json_data)
 
 
+@app.route('/geolib/gdelt/results?row_id=<row_id>')
+def gdelt(row_id):
+    app.logger.debug('search_row_id: %s' % row_id)
+    gdelt_url = ('%s%s' % (app.config['GDELT_API'], row_id))
+
+    response = requests.get(gdelt_url)
+    json_data = json.loads(response.text)
+
+    return flask.render_template('gdelt.html', result=json_data)
+
+
 @app.route('/geolib/search')
 def search():
     parser = urlparse.urlparse(flask.request.url)
@@ -70,6 +81,19 @@ def points():
     app.logger.debug('json_data: %s' % json_data)
 
     return flask.render_template('results2.html', result=json_data)
+
+
+@app.route('/geolib/gdelt-points')
+def gdelt_points():
+    gdelt_points_url = ('%s%s' % (app.config['GDELT_POINTS_API'],
+                                  flask.request.query_string))
+    app.logger.debug('gdelt_points_url: %s' % gdelt_points_url)
+
+    response = requests.get(gdelt_points_url)
+    json_data = json.loads(response.text)
+    app.logger.debug('json_data: %s' % json_data)
+
+    return flask.render_template('results3.html', result=json_data)
 
 
 @app.route('/footprints')
